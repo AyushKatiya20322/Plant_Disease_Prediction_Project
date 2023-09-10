@@ -1,0 +1,13 @@
+
+To start docker container : 
+
+docker run -it -v C:\Users\asus\jptr:/jptr -p 8501:8501 --entrypoint /bin/bash tensorflow/serving
+
+To serve only latest model :
+
+tensorflow_model_server --rest_api_port=8501 --model_name=potato_model --model_base_path=/jptr/saved_models/
+
+
+to finally adjust the port and run it:
+
+docker run -t --rm -p 8501:8501 -v C:/Users/asus/jptr:/jptr tensorflow/serving --rest_api_port=8501 --model_config_file=/jptr/models.config

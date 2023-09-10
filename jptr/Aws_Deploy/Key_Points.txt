@@ -1,0 +1,37 @@
+use boto3 library to interact with AWS S3. You would need to create a new S3 bucket and upload the trained model to it.
+
+Modify the download_blob() function to use the boto3 library to download the trained model from the S3 bucket.
+
+If you want to deploy the code to AWS Lambda, create a new Lambda function and upload the modified Python script as a ZIP file.
+
+Make sure the Lambda function has appropriate permissions to access the S3 bucket.
+
+Modify the predict() function to read the input image file from an AWS S3 bucket instead of from the local file system. You can use the boto3 library to download the input image from an S3 bucket.
+
+Test the Lambda function with sample input images to ensure that it is working correctly.
+
+
+
+
+
+
+
+pip install boto3
+
+
+
+import boto3
+
+# Create an S3 client
+s3 = boto3.client('s3')
+
+# Create a new S3 bucket
+bucket_name = 'my-bucket'
+s3.create_bucket(Bucket=bucket_name)
+
+# Upload the trained model to the S3 bucket
+model_file_path = 'path/to/trained/model'
+s3.upload_file(model_file_path, bucket_name, 'trained_model')
+
+
+
